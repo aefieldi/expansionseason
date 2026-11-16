@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosmic Weather Forecast: From Truth to Expansion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF8F4; --cream2:#F5F2EC; --white:#FFFFFF;
+  --navy:#1A1A2E; --navy2:#23233F; --navy3:#12121F;
+  --mint:#3FBF95; --mintBright:#7EECD4; --mintDeep:#1E8F6C;
+  --viol:#8B5FC7; --violL:#B88CED; --lav:#C5B8E8;
+  --orch:#D97FD9; --pink:#E8A0E8;
+  --ink:#1A1A2E; --sub:#5A5A72; --line:rgba(26,26,46,.12);
+  --hl:linear-gradient(90deg,var(--viol),var(--orch),var(--mintBright));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{font-family:'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--cream);
+  background-image:linear-gradient(rgba(139,95,199,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(139,95,199,.06) 1px,transparent 1px);
+  background-size:32px 32px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font-family:inherit}
+.mono{font-family:'Space Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+em.g{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;
+  background:linear-gradient(90deg,var(--viol),var(--orch));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;text-align:center;padding:64px 20px 76px;
+  background:linear-gradient(180deg,#2A2350 0%,#5B4A9E 38%,#B79BE6 72%,#EBD3F3 100%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.star{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(255,255,255,.7);animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.25)}}
+.gem{position:absolute;animation:fl 7s ease-in-out infinite;filter:drop-shadow(0 8px 16px rgba(26,26,46,.35))}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(5deg)}}
+.hero .inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.hero .kick{color:var(--mintBright);margin-bottom:18px;display:inline-flex;gap:10px;align-items:center;
+  background:rgba(18,18,31,.45);border:1px solid rgba(126,236,212,.4);padding:8px 16px;border-radius:999px}
+.dot{width:9px;height:9px;border-radius:50%;background:#FF6B8B;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,139,.7)}50%{box-shadow:0 0 0 8px rgba(255,107,139,0)}}
+.hero h1{font-weight:900;font-size:clamp(36px,6.6vw,72px);line-height:1.03;color:#fff;letter-spacing:-.02em;text-shadow:0 4px 0 rgba(26,26,46,.25)}
+.hero h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;
+  background:linear-gradient(90deg,var(--mintBright),#fff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;padding-right:.08em}
+.hero p.lead{color:#fff;font-size:clamp(17px,2.2vw,21px);max-width:660px;margin:20px auto 0;font-weight:400;text-shadow:0 1px 10px rgba(26,26,46,.4)}
+.nowpill{display:inline-block;margin-top:24px;background:rgba(255,255,255,.88);color:var(--navy);font-weight:700;font-size:15.5px;padding:10px 20px;border-radius:999px;box-shadow:0 10px 24px -12px rgba(26,26,46,.6)}
+.hero .by{margin-top:22px;color:var(--navy);font-weight:700}
+
+.vid{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:100%;max-width:560px;aspect-ratio:16/9;margin:28px auto 0;border-radius:24px;overflow:hidden;text-decoration:none;color:#fff;
+  background:radial-gradient(120% 90% at 30% 10%,#3A2F6B 0%,var(--navy) 60%,var(--navy3) 100%);border:2px solid rgba(126,236,212,.6);box-shadow:0 22px 44px -18px rgba(26,26,46,.85);transition:transform .25s,box-shadow .25s}
+.vid::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(197,184,232,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(197,184,232,.1) 1px,transparent 1px);background-size:26px 26px}
+.vid:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 28px 50px -18px rgba(26,26,46,1)}
+.vid:focus-visible{outline:3px solid var(--mintBright);outline-offset:3px}
+.vid .pl{position:relative;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--viol),var(--orch));box-shadow:0 10px 26px -8px rgba(217,127,217,.9)}
+.vid .pl::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid var(--mintBright);animation:ring 2.4s ease-out infinite}
+.vid .pl svg{position:relative;width:32px;height:32px;margin-left:6px}
+.vid .vt{position:relative;font-weight:800;font-size:clamp(19px,2.6vw,24px);line-height:1.2}
+.vid .vs{position:absolute;right:14px;bottom:12px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;background:rgba(18,18,31,.75);border:1px solid rgba(197,184,232,.35);padding:4px 9px;border-radius:8px;color:var(--mintBright)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:20;background:rgba(35,25,60,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(197,184,232,.25)}
+nav .row{max-width:1180px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:11px 16px;scrollbar-width:none}
+nav .row::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;text-decoration:none;color:#E9E1FA;font-size:14px;font-weight:600;padding:8px 15px;border-radius:999px;border:1px solid rgba(197,184,232,.3);white-space:nowrap;transition:.25s}
+nav a b{font-family:'Space Mono',monospace;color:var(--mintBright);margin-right:7px;font-size:12px}
+nav a:hover,nav a.on{background:linear-gradient(90deg,var(--viol),var(--orch));border-color:transparent;color:#fff}
+nav a.on b,nav a:hover b{color:#fff}
+
+/* ---------- beats ---------- */
+main{max-width:1180px;margin:0 auto;padding:44px 18px 20px}
+.beat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);background:var(--white);border:1px solid var(--line);border-radius:28px;overflow:hidden;
+  box-shadow:0 18px 44px -22px rgba(74,48,128,.4);margin-bottom:34px}
+.beat.flip .art{order:2}
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .in{opacity:1!important;transform:none!important}
+.art{position:relative;background:radial-gradient(120% 90% at 30% 10%,#3A2F6B 0%,var(--navy) 60%,var(--navy3) 100%);min-height:330px;display:flex;align-items:center;justify-content:center;padding:26px}
+.art::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(197,184,232,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(197,184,232,.09) 1px,transparent 1px);background-size:26px 26px}
+.art svg{position:relative;width:100%;max-width:380px;height:auto;overflow:visible}
+.art .num{position:absolute;top:14px;left:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:86px;line-height:1;
+  background:var(--hl);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.95}
+.beat.flip .art .num{left:auto;right:26px}
+.body{padding:38px 40px 36px}
+.body .mono,.card .mono{color:var(--viol);font-weight:700}
+h2{font-size:clamp(27px,3.3vw,39px);font-weight:800;line-height:1.1;letter-spacing:-.015em;margin:10px 0 18px}
+h2 em{font-size:1.12em}
+ul.pts{list-style:none;display:grid;gap:11px}
+ul.pts li{position:relative;padding-left:32px;font-size:17.5px;color:#2B2B45}
+ul.pts li::before{content:"";position:absolute;left:0;top:5px;width:18px;height:18px;border-radius:6px;transform:rotate(45deg) scale(.72);
+  background:linear-gradient(135deg,var(--mintBright),var(--viol))}
+ul.pts li strong{font-weight:700;color:var(--ink)}
+.hlt{background:linear-gradient(180deg,transparent 58%,rgba(126,236,212,.6) 58%);font-weight:700}
+.note{margin-top:18px;background:var(--cream2);border-left:4px solid var(--viol);border-radius:0 14px 14px 0;padding:13px 16px;font-size:15.5px;color:var(--sub)}
+.note b{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15.5px;padding:12px 20px;border-radius:999px;color:#fff;border:0;cursor:pointer;
+  background:linear-gradient(90deg,var(--viol),var(--orch));box-shadow:0 10px 22px -10px rgba(139,95,199,.9);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(139,95,199,1)}
+.btn.ghost{background:#fff;color:var(--viol);border:1.5px solid var(--lav);box-shadow:none}
+.btn.mint{background:linear-gradient(90deg,var(--mintDeep),var(--mint));box-shadow:0 10px 22px -10px rgba(30,143,108,.9)}
+.btn:focus-visible,.pick:focus-visible{outline:3px solid var(--mintBright);outline-offset:2px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* ---------- white cards ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:30px;padding:40px;box-shadow:0 18px 44px -22px rgba(74,48,128,.4);margin-bottom:34px}
+.card>p.sub{color:var(--sub);font-size:18px;max-width:700px;margin-top:-6px}
+
+/* translate grid */
+.tr{display:grid;gap:10px;margin-top:24px}
+.tr .r{display:grid;grid-template-columns:210px 1fr 1fr;gap:14px;align-items:center;padding:15px 18px;border-radius:18px;background:var(--cream);border:1px solid var(--line)}
+.tr .r b{font-weight:800;font-size:17px}
+.tr .r span{font-size:15.5px;color:#2B2B45}
+.tr .r span.biz{background:linear-gradient(90deg,#F3ECFD,#E6FBF4);border:1px solid #E0D2F7;border-radius:12px;padding:9px 13px;font-weight:600}
+.tr .hd{background:none;border:0;padding:0 18px}
+.tr .hd span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--viol);font-weight:700}
+
+/* dates */
+.dates{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.dt{position:relative;border-radius:20px;padding:18px 18px 20px;background:var(--cream);border:1px solid var(--line);transition:.25s}
+.dt .d{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:34px;line-height:1;background:var(--hl);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dt h3{font-size:17.5px;font-weight:800;line-height:1.2;margin:8px 0 6px}
+.dt p{font-size:14.5px;color:var(--sub)}
+.dt .st{position:absolute;top:16px;right:14px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:999px;background:#F3ECFD;color:#5A3A94}
+.dt.past{opacity:.72}
+.dt.past .st{background:#E6FBF4;color:var(--mintDeep)}
+.dt.today{background:linear-gradient(135deg,#2A2350,#5B4A9E);border-color:var(--mintBright);box-shadow:0 0 0 4px rgba(126,236,212,.25)}
+.dt.today h3{color:#fff}.dt.today p{color:#E0D8F5}
+.dt.today .d{background:linear-gradient(90deg,var(--mintBright),#fff);-webkit-background-clip:text;background-clip:text}
+.dt.today .st{background:var(--mintBright);color:var(--navy)}
+.dt.next{border-color:var(--viol);box-shadow:0 0 0 3px rgba(139,95,199,.16)}
+.dt.next .st{background:linear-gradient(90deg,var(--viol),var(--orch));color:#fff}
+.fine{font-size:13.5px;color:var(--sub);margin-top:16px}
+
+/* ---------- dark panel ---------- */
+.dark{position:relative;overflow:hidden;border-radius:30px;padding:46px 40px;margin-bottom:34px;color:#fff;
+  background:radial-gradient(110% 120% at 15% 0%,#4A3A8C 0%,var(--navy) 55%,var(--navy3) 100%);box-shadow:0 24px 54px -24px rgba(26,26,46,.8)}
+.dark::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(197,184,232,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(197,184,232,.08) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+.dark>*{position:relative}
+.dark .mono{color:var(--mintBright)}
+.dark h2{font-size:clamp(30px,4.4vw,52px);font-weight:900;line-height:1.05;margin:10px 0 10px;letter-spacing:-.02em}
+.dark h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;background:linear-gradient(90deg,var(--mintBright),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.dark p.sub{color:#D9D2EE;font-size:18px;max-width:680px}
+.step{margin-top:28px}
+.step .lbl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.step .lbl b{font-size:19px;font-weight:800}
+.step .lbl i{font-style:normal;font-size:14px;color:#C9C1E3}
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.pick{all:unset;box-sizing:border-box;cursor:pointer;font-weight:600;font-size:15px;padding:9px 15px;border-radius:999px;
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(197,184,232,.28);transition:.2s;display:inline-flex;gap:7px;align-items:center}
+.pick:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
+.pick .gl{font-size:17px;color:var(--mintBright);font-family:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2',sans-serif}
+.pick.sel{background:linear-gradient(90deg,rgba(139,95,199,.85),rgba(217,127,217,.7));border-color:var(--mintBright);box-shadow:0 0 0 4px rgba(126,236,212,.18)}
+.pick.sel .gl{color:#fff}
+details.help{margin-top:10px;font-size:14.5px;color:#C9C1E3}
+details.help summary{cursor:pointer;color:var(--mintBright);font-weight:600;width:fit-content}
+details.help p{margin-top:6px;max-width:680px}
+
+/* dashboard */
+#dash{margin-top:34px}
+.empty{border:1.5px dashed rgba(197,184,232,.4);border-radius:20px;padding:26px;text-align:center;color:#C9C1E3;font-size:17px}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{background:rgba(255,255,255,.07);border:1px solid rgba(197,184,232,.25);border-radius:20px;padding:20px}
+.tile.wide{grid-column:span 3;background:linear-gradient(90deg,rgba(139,95,199,.5),rgba(217,127,217,.35))}
+.tile .k{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mintBright);font-weight:700}
+.tile p{font-size:16.5px;margin-top:8px;color:#F1ECFB}
+.tile p.big{font-size:clamp(22px,2.8vw,30px);font-weight:800;line-height:1.15;color:#fff}
+.tile p small{display:block;font-size:14px;color:#C9C1E3;margin-top:8px}
+.tile.light{background:#FAF8F4;border-color:transparent}
+.tile.light .k{color:var(--viol)}.tile.light p{color:#2B2B45}.tile.light p small{color:var(--sub)}
+.locked{opacity:.7;font-style:italic}
+
+/* expansion card */
+.xwrap{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:26px;align-items:center;margin-top:28px}
+.xcard{position:relative;overflow:hidden;border-radius:26px;padding:30px 28px;text-align:center;color:#fff;
+  background:linear-gradient(180deg,#2A2350 0%,#5B4A9E 45%,#B79BE6 100%);box-shadow:0 24px 50px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.25)}
+.xcard .gl{font-size:54px;line-height:1;color:var(--mintBright);font-family:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2',sans-serif}
+.xcard .mono{color:var(--mintBright);font-size:11px}
+.xcard h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:32px;line-height:1.08;margin:12px 0}
+.xcard .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:12px 0}
+.xcard .meta span{font-size:12.5px;font-weight:600;background:rgba(18,18,31,.45);border:1px solid rgba(126,236,212,.4);padding:5px 11px;border-radius:999px}
+.xcard .mv{background:rgba(255,255,255,.9);color:var(--navy);border-radius:16px;padding:13px 15px;font-weight:600;font-size:15.5px;margin-top:8px}
+.xcard .ft{margin-top:16px;color:var(--navy);font-weight:700;font-size:10.5px}
+.xside p{color:#D9D2EE;font-size:17px;margin-bottom:16px}
+.msg{min-height:24px;font-weight:600;color:var(--mintBright);margin-top:12px;font-size:15.5px}
+.card .msg,.body .msg{color:var(--mintDeep)}
+
+/* sliders */
+.sl{display:grid;gap:16px;margin-top:6px}
+.sl label{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-weight:700;font-size:16.5px}
+.sl label small{grid-column:1/-1;font-weight:400;color:var(--sub);font-size:14.5px}
+.sl output{font-family:'Space Mono',monospace;color:var(--viol);font-weight:700}
+input[type=range]{grid-column:1/-1;-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--lav),var(--orch),var(--mintBright));outline-offset:4px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--viol);box-shadow:0 4px 10px rgba(74,48,128,.4);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--viol);cursor:pointer}
+.verdict{margin-top:22px;border-radius:20px;padding:20px 22px;background:linear-gradient(90deg,#F3ECFD,#E6FBF4);border:1px solid #E0D2F7}
+.verdict .v{font-size:26px;font-weight:900;line-height:1.1}
+.verdict p{margin-top:6px;font-size:16.5px;color:#2B2B45}
+.verdict p.au{font-size:15px;color:var(--sub);margin-top:10px}
+input.txt{width:100%;font:inherit;font-size:16.5px;padding:13px 16px;border-radius:14px;border:1.5px solid var(--lav);background:var(--cream);color:var(--ink)}
+input.txt:focus{outline:3px solid rgba(126,236,212,.7);border-color:var(--viol)}
+
+/* ritual */
+.rit{display:grid;gap:14px;margin-top:8px}
+.rit .s{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:start}
+.rit .n{grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:24px;color:#fff;background:linear-gradient(135deg,var(--viol),var(--orch))}
+.rit label{font-weight:700;font-size:17px;padding-top:6px}
+.sealed{margin-top:20px;border-radius:20px;padding:22px;background:linear-gradient(135deg,#2A2350,#5B4A9E);color:#fff;display:none}
+.sealed.show{display:block}
+.sealed .mono{color:var(--mintBright)!important}
+.sealed p{margin-top:8px;font-size:17px}
+.sealed p b{color:var(--mintBright)}
+
+/* two-up tools */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:34px}
+.duo .card{margin-bottom:0;display:flex;flex-direction:column}
+.duo h2{font-size:clamp(24px,2.6vw,32px)}
+.pbox{flex:1;display:grid;place-items:center;text-align:center;min-height:170px;border-radius:22px;padding:26px;margin:4px 0 20px;
+  background:radial-gradient(120% 90% at 30% 10%,#3A2F6B 0%,var(--navy) 60%,var(--navy3) 100%);color:#fff}
+.pbox q{quotes:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(23px,2.6vw,29px);line-height:1.2}
+.pbox .act{display:block;margin-top:16px;font-family:'Outfit',sans-serif;font-style:normal;font-weight:700;font-size:16.5px;color:var(--navy);background:var(--mintBright);border-radius:999px;padding:9px 18px}
+.pbox .mono{color:var(--mintBright)!important;display:block;margin-bottom:10px}
+.fade{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* final */
+.final{text-align:center}
+.final h2{font-size:clamp(28px,3.8vw,44px);font-weight:900;line-height:1.08;margin:10px auto 12px;max-width:760px;letter-spacing:-.02em}
+.final p{color:var(--sub);font-size:18px;max-width:660px;margin:0 auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;text-align:left}
+.two .c{border-radius:22px;padding:24px;border:1px solid var(--line);background:var(--cream)}
+.two .c h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.two .c p{font-size:16px;margin:0 0 16px;max-width:none}
+.disc{max-width:760px;margin:0 auto 18px;text-align:center;font-size:13.5px;color:var(--sub);padding:0 20px}
+footer{text-align:center;padding:10px 20px 44px;color:var(--sub)}
+
+/* ---------- svg animation ---------- */
+.bob{animation:bob 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.bob2{animation:bob 6s ease-in-out -2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.ring{animation:ring 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.ring.r2{animation-delay:.8s}.ring.r3{animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+.glow{animation:glow 2s ease-in-out infinite}
+.glow.b{animation-delay:1s}
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+.orbit{animation:spin 26s linear infinite;transform-origin:190px 150px}
+.orbit.rev{animation-duration:38s;animation-direction:reverse}
+.orbit.fast{animation-duration:16s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spark{animation:tw 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.arrow{animation:shoot 4.5s cubic-bezier(.3,.7,.2,1) infinite}
+@keyframes shoot{0%,15%{transform:translate(-26px,26px);opacity:0}30%{opacity:1}70%,100%{transform:translate(34px,-34px);opacity:0}}
+.breathe{animation:breathe 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes breathe{0%,100%{transform:scale(.62)}50%{transform:scale(1.08)}}
+.flame{animation:flick 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.flame.f2{animation-delay:.3s}.flame.f3{animation-delay:.6s}.flame.f4{animation-delay:.9s}.flame.f5{animation-delay:1.2s}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(-3deg)}50%{transform:scale(.88,1.14) rotate(3deg)}}
+
+@media (max-width:980px){.dates{grid-template-columns:repeat(2,1fr)}.dgrid{grid-template-columns:1fr 1fr}.tile.wide{grid-column:span 2}}
+@media (max-width:860px){
+  .beat{grid-template-columns:1fr}.beat.flip .art{order:0}
+  .art{min-height:250px}.art svg{max-width:300px}
+  .body{padding:28px 22px}.two,.duo,.xwrap{grid-template-columns:1fr}
+  .dark,.card{padding:32px 22px}
+  .gem{opacity:.5;transform:scale(.6)}
+  .hero{padding:48px 18px 56px}
+  .art .num{font-size:54px;top:10px;left:16px}
+  .beat.flip .art .num{right:18px}
+  .tr .r{grid-template-columns:1fr;gap:8px}.tr .hd{display:none}
+}
+@media (max-width:560px){.dates,.dgrid{grid-template-columns:1fr}.tile.wide{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <span class="star" style="top:12%;left:9%"></span><span class="star" style="top:22%;left:82%;animation-delay:1s"></span>
+  <span class="star" style="top:9%;left:58%;animation-delay:.5s"></span><span class="star" style="top:34%;left:22%;animation-delay:1.6s"></span>
+  <span class="star" style="top:44%;left:91%;animation-delay:2.1s"></span><span class="star" style="top:6%;left:34%;animation-delay:2.5s"></span>
+  <span class="star" style="top:58%;left:5%;animation-delay:1.2s"></span><span class="star" style="top:16%;left:70%;animation-delay:2.9s"></span>
+  <svg class="gem" style="top:15%;left:6%;width:74px" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30,4 54,22 30,56 6,22" fill="#7EECD4"/><polygon points="30,4 54,22 30,24" fill="#B9F6E7"/><polygon points="30,4 6,22 30,24" fill="#3FBF95"/><polygon points="6,22 30,24 30,56" fill="#5FD6B4"/></svg>
+  <svg class="gem" style="top:54%;left:13%;width:46px;animation-delay:-3s" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30,4 54,22 30,56 6,22" fill="#E8A0E8"/><polygon points="30,4 54,22 30,24" fill="#F7D3F7"/><polygon points="30,4 6,22 30,24" fill="#D97FD9"/></svg>
+  <svg class="gem" style="top:20%;right:7%;width:62px;animation-delay:-2s" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30,4 54,22 30,56 6,22" fill="#B88CED"/><polygon points="30,4 54,22 30,24" fill="#E3D2FA"/><polygon points="30,4 6,22 30,24" fill="#8B5FC7"/></svg>
+  <svg class="gem" style="top:60%;right:14%;width:40px;animation-delay:-4.5s" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30,4 54,22 30,56 6,22" fill="#7EECD4"/><polygon points="30,4 54,22 30,24" fill="#fff"/></svg>
+  <div class="inner">
+    <div class="mono kick"><span class="dot"></span>Cosmic weather · Nov 15 to Dec 21</div>
+    <h1>The retrogrades are over. What are you ready to <em>expand into?</em></h1>
+    <p class="lead">Your forecast for the energy right now: from Scorpio truth to Sagittarius expansion. Pick your placements and get your move for the season.</p>
+    <a class="vid" href="https://www.loom.com/share/12e59bfe8ddb4134ae8f9c649da43008" target="_blank" rel="noopener"><span class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="4,2 22,12 4,22" fill="#fff"/></svg></span><span class="vt">Watch the video walkthrough</span><span class="vs">6 MIN</span></a>
+    <div class="nowpill" id="nowpill">✨ Exhale, then expand</div>
+    <p class="by mono">Spiritual Business Skool · Amanda</p>
+  </div>
+</header>
+
+<nav aria-label="Sections"><div class="row">
+  <a href="#sky"><b>01</b>The sky right now</a>
+  <a href="#dates"><b>02</b>Key dates</a>
+  <a href="#forecast"><b>03</b>Your forecast</a>
+  <a href="#decide"><b>04</b>Expand or contract?</a>
+  <a href="#ritual"><b>05</b>Kislev ritual</a>
+  <a href="#tools"><b>★</b>Prompts</a>
+</div></nav>
+
+<main>
+
+<!-- 01 -->
+<section class="beat rv" id="sky">
+  <div class="art"><span class="num">01</span>
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <circle cx="190" cy="150" r="118" fill="none" stroke="#B88CED" stroke-width="1.5" stroke-dasharray="4 8" class="orbit"/>
+      <circle cx="190" cy="150" r="82" fill="none" stroke="#C5B8E8" stroke-width="1.5" opacity=".5"/>
+      <circle cx="190" cy="150" r="48" fill="none" stroke="#C5B8E8" stroke-width="1.5" opacity=".35"/>
+      <g class="orbit fast"><circle cx="190" cy="102" r="9" fill="#7EECD4"/></g>
+      <g class="orbit rev"><circle cx="272" cy="150" r="13" fill="#E8A0E8"/><circle cx="272" cy="150" r="19" fill="none" stroke="#E8A0E8" stroke-width="2" opacity=".5"/></g>
+      <g class="orbit"><circle cx="190" cy="268" r="11" fill="#D97FD9"/><circle cx="212" cy="262" r="16" fill="#B88CED"/><ellipse cx="212" cy="262" rx="26" ry="6" fill="none" stroke="#fff" stroke-width="2" opacity=".7" transform="rotate(-18 212 262)"/></g>
+      <circle class="ring" cx="190" cy="150" r="22" fill="none" stroke="#7EECD4" stroke-width="3"/>
+      <circle cx="190" cy="150" r="26" fill="#8B5FC7" stroke="#fff" stroke-width="3"/>
+      <g class="arrow" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M176 164 L204 136"/><path d="M190 136 H204 V150"/><path d="M180 152 L188 160"/>
+      </g>
+      <polygon class="spark" points="322,44 327,60 343,65 327,70 322,86 317,70 301,65 317,60" fill="#E8A0E8"/>
+      <polygon class="spark" points="54,214 58,228 72,232 58,236 54,250 50,236 36,232 50,228" fill="#7EECD4" style="animation-delay:1.2s"/>
+    </svg>
+  </div>
+  <div class="body">
+    <div class="mono">The sky right now</div>
+    <h2>Exhale first. <em class="g">Then expand.</em></h2>
+    <ul class="pts">
+      <li><strong>Mercury and Venus both turned direct on November 13.</strong> Two retrogrades ended on the same day. Conversations, money and relationships get to move again.</li>
+      <li><strong>Mars meets Jupiter in Leo</strong> right now. That's a confidence surge. Courage plus luck, in the sign of being seen.</li>
+      <li><strong>Sagittarius season opens November 22.</strong> Belief, vision, teaching, travel, the bigger view.</li>
+      <li>Then <strong>Mars moves into Virgo on November 25</strong>, and the bold idea gets a calendar and a system.</li>
+      <li>Saturn, Neptune and Uranus are still retrograde, so the deep restructuring keeps humming in the background. <span class="hlt">Clarity comes back in layers.</span></li>
+    </ul>
+    <div class="note"><b>The Kabbalistic lens:</b> Sagittarius is the month of Kislev, ruled by Jupiter and known as the month of miracles. The teaching isn't "manifest anything." It's act from faith while you do the work.</div>
+  </div>
+</section>
+
+<section class="card rv" id="translate">
+  <div class="mono">Translate it</div>
+  <h2>What this means <em class="g">for your business</em></h2>
+  <div class="tr">
+    <div class="r hd"><span>The energy</span><span>What it means now</span><span>Your business move</span></div>
+    <div class="r"><b>🦂 Scorpio to Sagittarius 🏹</b><span>From depth, truth and release into vision, faith and direction.</span><span class="biz">Audit what's no longer true, then name the bigger mission.</span></div>
+    <div class="r"><b>💬 Mercury + Venus direct</b><span>Communication and relationships get their momentum back.</span><span class="biz">Reopen stalled conversations, refine your offers, repair partnerships.</span></div>
+    <div class="r"><b>🦁 Mars + Jupiter in Leo</b><span>Bold visibility and courageous action.</span><span class="biz">Launch, pitch, sell, create, be seen. It doesn't need to be perfect.</span></div>
+    <div class="r"><b>🌾 Mars in Virgo</b><span>Strategy, refinement and follow-through.</span><span class="biz">Turn the vision into a calendar, an SOP, an offer or a launch plan.</span></div>
+    <div class="r"><b>🏹 Sagittarius season</b><span>Meaning, expansion, teaching, adventure.</span><span class="biz">Position your work as a philosophy and a transformation, more than a product.</span></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="card rv" id="dates">
+  <div class="mono">Date tracker</div>
+  <h2>Eight dates to <em class="g">plan around</em></h2>
+  <p class="sub">This updates itself. Whatever day you open it, you'll see what's passed, what's live and what's next.</p>
+  <div class="dates" id="datelist"></div>
+  <p class="fine">Dates are US Eastern. In Europe, Venus turned direct in the early hours of November 14, and on the US west coast the Sun enters Sagittarius late on November 21.</p>
+</section>
+
+<!-- 03 -->
+<section class="dark rv" id="forecast">
+  <div class="mono">Your personal forecast</div>
+  <h2>Three taps to <em>your season</em></h2>
+  <p class="sub">Start with your rising sign. Add your North Node and Human Design and your dashboard fills in as you go.</p>
+
+  <div class="step">
+    <div class="lbl"><b>1. Your rising sign</b><i>the sign that was rising when you were born</i></div>
+    <div class="picks" id="p-rising" role="group" aria-label="Rising sign"></div>
+    <details class="help"><summary>I don't know mine</summary><p>Pull a free birth chart with your birth date, exact time and place. Your rising sign is listed as "Ascendant" or "ASC". No birth time? Use your Sun sign for now. It still reads well as a seasonal lens.</p></details>
+  </div>
+
+  <div class="step">
+    <div class="lbl"><b>2. Your North Node</b><i>your growth direction</i></div>
+    <div class="picks" id="p-node" role="group" aria-label="North Node sign"></div>
+    <details class="help"><summary>I don't know mine</summary><p>It's on the same birth chart, shown as "North Node" or "True Node" with a ☊ symbol. It only needs your birth date, so you can find it even without a birth time.</p></details>
+  </div>
+
+  <div class="step">
+    <div class="lbl"><b>3. Your Human Design</b><i>type, then authority and profile if you know them</i></div>
+    <div class="picks" id="p-type" role="group" aria-label="Human Design type"></div>
+    <div class="picks" id="p-auth" role="group" aria-label="Human Design authority" style="margin-top:10px"></div>
+    <div class="picks" id="p-prof" role="group" aria-label="Human Design profile" style="margin-top:10px"></div>
+    <details class="help"><summary>I don't know mine</summary><p>Any free Human Design chart will show your Type, Authority and Profile at the top. You need your birth date, time and place. Skip this step if you don't have it. Your forecast still works.</p></details>
+  </div>
+
+  <div id="dash"><div class="empty">☝️ Pick your rising sign to open your dashboard.</div></div>
+</section>
+
+<!-- 04 -->
+<section class="beat flip rv" id="decide">
+  <div class="art"><span class="num">04</span>
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <circle class="ring" cx="190" cy="150" r="60" fill="none" stroke="#7EECD4" stroke-width="2"/>
+      <circle class="ring r2" cx="190" cy="150" r="60" fill="none" stroke="#E8A0E8" stroke-width="2"/>
+      <circle class="ring r3" cx="190" cy="150" r="60" fill="none" stroke="#B88CED" stroke-width="2"/>
+      <g class="breathe">
+        <circle cx="190" cy="150" r="88" fill="#8B5FC7" opacity=".35"/>
+        <circle cx="190" cy="150" r="62" fill="#D97FD9" opacity=".55"/>
+        <circle cx="190" cy="150" r="38" fill="#7EECD4"/>
+        <polygon points="190,128 208,142 190,172 172,142" fill="#fff"/><polygon points="190,128 208,142 190,145" fill="#E3D2FA"/>
+      </g>
+      <g stroke="#C5B8E8" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8">
+        <path d="M40 150 H70 M58 140 L70 150 L58 160"/><path d="M340 150 H310 M322 140 L310 150 L322 160"/>
+      </g>
+      <polygon class="spark" points="318,48 322,62 336,66 322,70 318,84 314,70 300,66 314,62" fill="#7EECD4"/>
+    </svg>
+  </div>
+  <div class="body">
+    <div class="mono">Decision tool</div>
+    <h2>Expand or <em class="g">contract?</em></h2>
+    <input class="txt" id="opp" type="text" placeholder="Name the opportunity you're weighing" aria-label="The opportunity you're weighing" maxlength="90" style="margin-bottom:20px">
+    <div class="sl">
+      <label>Desire <output id="o-d">5</output><small>Do I actually want this, or do I think I should?</small><input type="range" min="1" max="10" value="5" id="s-d"></label>
+      <label>Capacity <output id="o-c">5</output><small>Do I have the time, energy and money to do it well?</small><input type="range" min="1" max="10" value="5" id="s-c"></label>
+      <label>Timing <output id="o-t">5</output><small>Is now the moment, or am I rushing it?</small><input type="range" min="1" max="10" value="5" id="s-t"></label>
+      <label>Alignment <output id="o-a">5</output><small>Does it fit the mission I'm naming this season?</small><input type="range" min="1" max="10" value="5" id="s-a"></label>
+    </div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="beat rv" id="ritual">
+  <div class="art"><span class="num">05</span>
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <circle class="glow" cx="190" cy="120" r="96" fill="#8B5FC7" opacity=".3"/>
+      <g>
+        <g fill="#FAF8F4"><rect x="92" y="150" width="16" height="74" rx="6"/><rect x="138" y="136" width="16" height="88" rx="6"/><rect x="182" y="116" width="16" height="108" rx="6"/><rect x="226" y="136" width="16" height="88" rx="6"/><rect x="272" y="150" width="16" height="74" rx="6"/></g>
+        <g fill="#7EECD4">
+          <path class="flame" d="M100 116 C112 132 108 146 100 146 C92 146 88 132 100 116 Z"/>
+          <path class="flame f2" d="M146 102 C158 118 154 132 146 132 C138 132 134 118 146 102 Z" fill="#E8A0E8"/>
+          <path class="flame f3" d="M190 76 C206 98 200 114 190 114 C180 114 174 98 190 76 Z" fill="#fff"/>
+          <path class="flame f4" d="M234 102 C246 118 242 132 234 132 C226 132 222 118 234 102 Z" fill="#E8A0E8"/>
+          <path class="flame f5" d="M280 116 C292 132 288 146 280 146 C272 146 268 132 280 116 Z"/>
+        </g>
+        <rect x="70" y="224" width="240" height="16" rx="8" fill="#B88CED"/>
+        <rect x="150" y="240" width="80" height="22" rx="8" fill="#8B5FC7"/>
+        <rect x="120" y="262" width="140" height="12" rx="6" fill="#C5B8E8"/>
+      </g>
+      <polygon class="spark" points="54,60 59,76 75,81 59,86 54,102 49,86 33,81 49,76" fill="#E8A0E8"/>
+      <polygon class="spark" points="330,64 334,78 348,82 334,86 330,100 326,86 312,82 326,78" fill="#7EECD4" style="animation-delay:1.3s"/>
+    </svg>
+  </div>
+  <div class="body">
+    <div class="mono">The Kislev ritual</div>
+    <h2>Four steps of <em class="g">faith in action</em></h2>
+    <p style="color:var(--sub);font-size:17px;margin:-6px 0 20px">Kislev is the month of miracles, and its work is correcting doubt. Five minutes, four lines. Light a candle if you'd like.</p>
+    <div class="rit">
+      <div class="s"><span class="n">1</span><label for="r1">Name the doubt</label><input class="txt" id="r1" type="text" maxlength="140" placeholder="The doubt that's been shrinking my ambition is..."></div>
+      <div class="s"><span class="n">2</span><label for="r2">Name the action that expresses trust</label><input class="txt" id="r2" type="text" maxlength="140" placeholder="If I fully trusted this, I would..."></div>
+      <div class="s"><span class="n">3</span><label for="r3">Choose one generous act</label><input class="txt" id="r3" type="text" maxlength="140" placeholder="This week I'll give..."></div>
+      <div class="s"><span class="n">4</span><label for="r4">Take one concrete business step</label><input class="txt" id="r4" type="text" maxlength="140" placeholder="Before Friday I will..."></div>
+    </div>
+    <div class="links"><button class="btn" type="button" id="seal">🕯️ Seal my ritual</button><button class="btn ghost" type="button" id="copyrit">Copy it</button></div>
+    <div class="msg" id="ritmsg" aria-live="polite"></div>
+    <div class="sealed" id="sealed" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- tools -->
+<div class="duo rv" id="tools">
+  <section class="card">
+    <div class="mono">Retrograde release journal</div>
+    <h2>What are you <em class="g">done carrying?</em></h2>
+    <div class="pbox"><div><span class="mono" id="jn">Prompt 1 of 8</span><q id="jq"></q></div></div>
+    <div><button class="btn" type="button" id="jnext">Next prompt →</button></div>
+  </section>
+  <section class="card">
+    <div class="mono">Faith in action generator</div>
+    <h2>One prompt. <em class="g">One move.</em></h2>
+    <div class="pbox"><div><span class="mono">Sit with this</span><q id="fq"></q><span class="act" id="fa"></span></div></div>
+    <div><button class="btn mint" type="button" id="fnext">✨ Give me another</button></div>
+  </section>
+</div>
+
+<!-- final -->
+<section class="card final rv" id="join">
+  <div class="mono">Ready when you are</div>
+  <h2>Decide what you're expanding into, <em class="g">then build it.</em></h2>
+  <p>Post your Expansion Card in the community and tell us your one move for the season.</p>
+  <div class="two">
+    <div class="c">
+      <h3>💎 Join Spiritual Business Skool</h3>
+      <p>Get 72+ other done-for-you AI digital products and skills to monetize your spiritual business with Claude AI and paid ads.</p>
+      <a class="btn" href="https://www.skool.com/amanda/about" target="_blank" rel="noopener">Join Spiritual Business Skool →</a>
+    </div>
+    <div class="c">
+      <h3>🔮 Book your 1:1 Strategy Audit</h3>
+      <p>For experts with an established platform and proven client results who are ready to get paid to exist, on repeat, for what they already know, love and do.</p>
+      <p>We'll identify the <b>#1 bottleneck</b> holding you back, the thing that would make everything else work if we fixed it. Then your <b>3 next steps</b> you can start today to manifest your business dreams into reality in the next 90 days.</p>
+      <a class="btn mint" href="https://cal.com/amanda-fielding-smith-ljdz7y/strategy-audit-open" target="_blank" rel="noopener">Book your audit →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<p class="disc">Astrology, Kabbalistic correspondences and Human Design are interpretive frameworks. This is a tool for reflection and intentional planning. It doesn't promise outcomes, and it isn't medical, financial or legal advice.</p>
+<footer class="mono">Spiritual Business Skool · made with Claude</footer>
+
+<script>
+(function(){
+  var d=document; d.documentElement.classList.add('js');
+  function $(id){return d.getElementById(id);}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function load(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  function copy(text,msgEl){
+    var ok=function(){msgEl.textContent='Copied. Paste it wherever you like.';},
+        no=function(){msgEl.textContent='Copy was blocked here. Select the text and copy it by hand.';};
+    try{navigator.clipboard.writeText(text).then(ok,no);}catch(e){no();}
+  }
+
+  /* reveal + nav */
+  var items=d.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.05});
+    items.forEach(function(el){io.observe(el);});
+  } else { items.forEach(function(el){el.classList.add('in');}); }
+  setTimeout(function(){items.forEach(function(el){var r=el.getBoundingClientRect(); if(r.top<window.innerHeight) el.classList.add('in');});},600);
+  var links=d.querySelectorAll('nav a'), map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on');});var a=map[e.target.id]; if(a){a.classList.add('on');}}});},{rootMargin:'-35% 0px -55% 0px'});
+    Object.keys(map).forEach(function(id){var el=$(id); if(el) so.observe(el);});
+  }
+
+  /* ---------- dates ---------- */
+  var EV=[
+    [10,13,'Nov 13','Mercury direct in Scorpio','Stalled conversations, contracts and tech start moving again.'],
+    [10,13,'Nov 13','Venus direct in Libra','Relationships, pricing and what you value regain momentum.'],
+    [10,15,'Nov 15','Mars meets Jupiter in Leo','A confidence surge. Pitch it, launch it, be seen.'],
+    [10,22,'Nov 22','Sun enters Sagittarius','The mood lifts. Think bigger and speak more freely.'],
+    [10,24,'Nov 24','Full Moon in Gemini','Right next to Uranus, so expect a surprise. Stay flexible.'],
+    [10,25,'Nov 25','Mars enters Virgo','From bold to precise. Systems, plans, follow-through.'],
+    [10,30,'Nov 30','Mercury clears its shadow','Around this date full clarity is back. Sign, commit, go.'],
+    [11,21,'Dec 21','Solstice, Capricorn season','The season closes. Your vision becomes structure.']
+  ];
+  var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  function days(a,b){return Math.round((a-b)/864e5);}
+  var html='', nextDone=false;
+  EV.forEach(function(e){
+    var dt=new Date(2026,e[0],e[1]), n=days(dt,today), cls='', st='';
+    if(n<0){cls='past';st='Done ✓';}
+    else if(n===0){cls='today';st='Today';}
+    else{st=n===1?'Tomorrow':'In '+n+' days'; if(!nextDone){cls='next';nextDone=true;}}
+    html+='<div class="dt '+cls+'"><span class="st">'+st+'</span><div class="d">'+e[2]+'</div><h3>'+e[3]+'</h3><p>'+e[4]+'</p></div>';
+  });
+  $('datelist').innerHTML=html;
+  var sag=new Date(2026,10,22), sol=new Date(2026,11,21), toSag=days(sag,today), toSol=days(sol,today), np=$('nowpill');
+  if(toSag>1) np.textContent='🏹 '+toSag+' days until Sagittarius season';
+  else if(toSag===1) np.textContent='🏹 Sagittarius season starts tomorrow';
+  else if(toSol>0) np.textContent='🏹 Sagittarius season, day '+(1-toSag)+'. '+toSol+(toSol===1?' day':' days')+' to the solstice';
+  else if(toSol===0) np.textContent='🌙 Solstice today. The season closes';
+
+  /* ---------- forecast data ---------- */
+  var G={Aries:'♈︎',Taurus:'♉︎',Gemini:'♊︎',Cancer:'♋︎',Leo:'♌︎',Virgo:'♍︎',Libra:'♎︎',Scorpio:'♏︎',Sagittarius:'♐︎',Capricorn:'♑︎',Aquarius:'♒︎',Pisces:'♓︎'};
+  var SIGNS=Object.keys(G);
+  var RISING={
+    Aries:{t:'From deep money truth to the big horizon',c:'A money or energy leak. Shared resources, debts, or an old pattern around who holds the power.',e:'Teaching, publishing, travel and a bigger belief about what is possible for you.',m:'Plug one leak, then put that money or time into learning, a trip, or publishing your point of view.',b:'Your creativity and joy. Make the fun thing public.',q:'What you\'ll invest in learning, or where you\'ll publish your point of view.'},
+    Taurus:{t:'From lopsided to truly reciprocal',c:'A partnership or client relationship where the giving and taking stopped being even.',e:'Shared money, investments, deeper collaborations and joint offers.',m:'Renegotiate one set of terms so it\'s reciprocal, then say yes to a joint venture or an investment in yourself.',b:'Home and foundations. Build the base that holds the bigger life.',q:'Which partnership terms change, and which joint venture gets your yes.'},
+    Gemini:{t:'From fixing the machine to choosing your people',c:'A routine, workload or way of working that was quietly draining you.',e:'Partnerships, clients and collaborators. The right people beside you.',m:'Fix one system so it runs without you, then make one relationship intentional: a collab, a referral partner, a dream client.',b:'Your voice. Post it, pitch it, say the thing.',q:'Who you want beside you next year: the collaborator, the client, the partner.'},
+    Cancer:{t:'From hidden creativity to work that feels good daily',c:'A creative block, or hiding the work you love most.',e:'Your daily work, your wellbeing and the systems that protect your energy.',m:'Ship the creative project, then build your wellbeing into how the business runs.',b:'Your income and pricing. Charge what it\'s worth.',q:'What your working day needs to look like to protect your energy.'},
+    Leo:{t:'From tending your roots to taking the stage',c:'Old weight around home, family and your emotional foundations.',e:'Creativity, joy, romance and being seen for what you make.',m:'Rest first. Then create from a calm nervous system and share your story publicly.',b:'You. Mars and Jupiter are in your sign, so this is your main character moment.',q:'Which creative project goes public before the solstice.'},
+    Virgo:{t:'From saying the thing to building home base',c:'Something unsaid. A conversation, a message, a truth you kept editing.',e:'Home, roots and the base you build everything else from.',m:'Say the thing. Then build a cozy, grounded base for your next expansion.',b:'Your inner world. The quiet behind-the-scenes work is doing more than it looks.',q:'Where home base is, and what it needs to hold your next level.'},
+    Libra:{t:'From knowing your worth to teaching what you know',c:'An old story about money and what you\'re worth. Venus, your ruler, just finished her retrograde in your sign.',e:'Your message, your content, your teaching and your local network.',m:'Raise the price or add an income stream, then teach what you know.',b:'Community and audience. Gather your people.',q:'What you\'re teaching next, and what it costs.'},
+    Scorpio:{t:'From a new you to getting paid for it',c:'An old version of you. Your own season just closed, with Mercury retracing your sign.',e:'Income, self-worth and the resources that back your next chapter.',m:'Turn your self-trust into an offer or a revenue stream.',b:'Career and visibility. Take the public swing.',q:'Your new price, or the offer that pays you for who you\'ve become.'},
+    Sagittarius:{t:'Your season. A brand new personal cycle',c:'Old narratives, endings, and everything you\'ve been carrying quietly.',e:'You. Your identity, your energy, your presence. It\'s your solar new year.',m:'Set a 12-month vision and launch something that feels like you.',b:'Your biggest ideas. Teach them, publish them, take them on the road.',q:'The one thing you\'re launching that feels completely like you.'},
+    Capricorn:{t:'From curating your circle to strategic rest',c:'A network, friendship group or future goal that no longer fits.',e:'Rest, spiritual practice and quiet prep before your own season opens on December 21.',m:'Curate your circle, then rest on purpose and clear the old stories before your visibility cycle.',b:'Shared money and deep partnerships. Ask for the investment.',q:'What you\'re laying down before your season starts.'},
+    Aquarius:{t:'From career pressure to finding your people',c:'An outdated career identity, or pressure about how you "should" lead.',e:'Community, your network, your audience and your future goals.',m:'Drop one obligation from your public role, then gather your people: a challenge, an event, a group offer.',b:'Partnerships. A bold collab or a dream client.',q:'Which room you\'re building, or which one you\'re joining.'},
+    Pisces:{t:'From a new belief to a bigger stage',c:'A belief, teaching or plan you had outgrown.',e:'Career, reputation, leadership and your long-term direction.',m:'Ask for the opportunity, and align your public work with a real mission.',b:'Daily work and health. Brave new routines.',q:'Which opportunity you\'re asking for, out loud.'}
+  };
+  var NODE={
+    Aries:['Independent initiation, courage, self-advocacy','Over-accommodating and losing yourself in others','Make one decision this week without polling anyone.'],
+    Taurus:['Stability, embodiment, sustainable value','Crisis-chasing and external validation','Do one slow, unglamorous task that makes your income steadier.'],
+    Gemini:['Curiosity, communication, flexibility','Certainty addiction and rigid opinions','Ask three real questions before you give one answer.'],
+    Cancer:['Emotional intelligence, care, belonging','Over-control and emotional detachment','Tell one client or friend how you actually feel.'],
+    Leo:['Creative self-expression, visibility, joy','Blending in and fearing attention','Post one thing with your face and your opinion on it.'],
+    Virgo:['Practical service, refinement, health','Perfectionism and analysis paralysis','Ship one thing at 80% and improve it live.'],
+    Libra:['Partnership, fairness, beauty, collaboration','Going it alone and avoiding conflict','Invite one person to co-create something with you.'],
+    Scorpio:['Depth, transformation, shared power','Surface-level safety and control','Have the one honest money conversation you\'ve been avoiding.'],
+    Sagittarius:['Faith, teaching, adventure, big-picture vision','Overthinking every detail','Say the big vision out loud before you have the plan.'],
+    Capricorn:['Structure, mastery, long-term impact','Depending on external approval','Block two hours for the long game. Nobody has to applaud it.'],
+    Aquarius:['Innovation, community, future-thinking','Needing to be universally liked','Share the idea that might lose you a few followers.'],
+    Pisces:['Trust, compassion, spiritual connection','Over-analysing and controlling the details','Spend ten minutes in stillness before you open your to-do list.']
+  };
+  var TYPE={
+    'Generator':['Respond to what lights you up. You don\'t have to chase every opportunity.','Starting things from your head. If your gut never said yes, let it go.'],
+    'Manifesting Generator':['Follow what\'s satisfying. Let the momentum be nonlinear and course-correct as you go.','Finishing everything you start. Drop what stopped being satisfying.'],
+    'Projector':['Wait for recognition or an invitation before you overextend. Guide, don\'t push.','Being seen by people who haven\'t invited you in.'],
+    'Manifestor':['Initiate. Tell the people it affects before you act, and resistance drops.','Waiting for permission. Inform, then go.'],
+    'Reflector':['Sample the people and the environments before deciding. Protect your time and space.','A fast answer. Yours takes a full moon cycle.']
+  };
+  var AUTH={
+    'Emotional':'Don\'t decide at the emotional peak. Sleep on it, and decide when the wave is calm.',
+    'Sacral':'Trust your gut yes or no in the moment. Have someone ask you yes/no questions.',
+    'Splenic':'Act on the quiet, immediate knowing. It only speaks once.',
+    'Ego / Heart':'Ask: do I truly want this, and can I commit to it?',
+    'Self-Projected':'Talk it out with someone you trust and listen for what sounds true in your own voice.',
+    'Mental':'Seek outside reflection in the right environment. Don\'t force certainty.',
+    'Lunar':'Give it a full 28-day cycle before a major decision.'
+  };
+  var PROF={
+    '1/3':'Research deeply, then learn through trial and error.',
+    '1/4':'Build a solid foundation of knowledge, then share it through your network.',
+    '2/4':'Protect your solitude, then let trusted networks open the doors.',
+    '2/5':'Guard your natural gifts and your alone time. Answer only the calls that truly fit.',
+    '3/5':'Experiment, iterate, and offer practical solutions.',
+    '3/6':'Treat every experiment as research. Lived experience becomes your wisdom.',
+    '4/6':'Build relationships and long-term trust. Lead through lived wisdom.',
+    '4/1':'Stand on your own foundation and grow through close relationships that respect it.',
+    '5/1':'Solve visible problems with grounded expertise.',
+    '5/2':'Offer practical solutions when called, and protect your downtime.',
+    '6/2':'Lead by example. Balance solitude with role-model visibility.',
+    '6/3':'Stay open to experiments. Your trial and error becomes the example others follow.'
+  };
+
+  var S=load('cw26')||{};
+  function picks(id,key,list,glyph){
+    var box=$(id);
+    list.forEach(function(v){
+      var b=d.createElement('button'); b.type='button'; b.className='pick'; b.setAttribute('aria-pressed','false');
+      b.innerHTML=(glyph?'<span class="gl" aria-hidden="true">'+G[v]+'</span>':'')+esc(v);
+      b.addEventListener('click',function(){
+        S[key]=(S[key]===v)?null:v; save('cw26',S); sync(box,key); render(); verdict();
+      });
+      b.dataset.v=v; box.appendChild(b);
+    });
+    sync(box,key);
+  }
+  function sync(box,key){
+    box.querySelectorAll('.pick').forEach(function(b){var on=b.dataset.v===S[key]; b.classList.toggle('sel',on); b.setAttribute('aria-pressed',on?'true':'false');});
+  }
+  picks('p-rising','r',SIGNS,true);
+  picks('p-node','n',SIGNS,true);
+  picks('p-type','t',Object.keys(TYPE));
+  picks('p-auth','a',Object.keys(AUTH));
+  picks('p-prof','p',Object.keys(PROF));
+
+  var cardText='';
+  function render(){
+    var dash=$('dash'), r=RISING[S.r];
+    if(!r){dash.innerHTML='<div class="empty">☝️ Pick your rising sign to open your dashboard.</div>';return;}
+    var n=NODE[S.n], t=TYPE[S.t], a=AUTH[S.a], p=PROF[S.p];
+    var stop=t?t[1]:(n?n[1]+'.':null);
+    var h='<div class="dgrid fade">';
+    h+='<div class="tile wide"><div class="k">'+esc(S.r)+' rising · your seasonal theme</div><p class="big">'+esc(r.t)+'</p></div>';
+    h+='<div class="tile"><div class="k">What\'s clearing</div><p>'+esc(r.c)+'</p></div>';
+    h+='<div class="tile"><div class="k">What\'s expanding</div><p>'+esc(r.e)+'</p></div>';
+    h+='<div class="tile"><div class="k">Where to be bold</div><p>'+esc(r.b)+'<small>Mars and Jupiter in Leo</small></p></div>';
+    h+='<div class="tile light"><div class="k">Your entrepreneurial move</div><p><b>'+esc(r.m)+'</b></p></div>';
+    h+='<div class="tile light"><div class="k">One decision to make</div><p>'+esc(r.q)+(a?'<small><b>How to make it ('+esc(S.a)+'):</b> '+esc(a)+'</small>':'<small class="locked">Add your authority to see how to decide.</small>')+'</p></div>';
+    h+='<div class="tile light"><div class="k">One thing to stop forcing</div><p>'+(stop?esc(stop):'<span class="locked">Add your North Node or Human Design type.</span>')+(t&&n?'<small>And from your South Node: '+esc(n[1].charAt(0).toLowerCase()+n[1].slice(1))+'.</small>':'')+'</p></div>';
+    h+='<div class="tile"><div class="k">North Node compass'+(n?' · '+esc(S.n):'')+'</div><p>'+(n?'<b>Lean into:</b> '+esc(n[0])+'.<small><b>This week:</b> '+esc(n[2])+'</small>':'<span class="locked">Pick your North Node above.</span>')+'</p></div>';
+    h+='<div class="tile"><div class="k">Your energy strategy'+(t?' · '+esc(S.t):'')+'</div><p>'+(t?esc(t[0]):'<span class="locked">Pick your Human Design type above.</span>')+'</p></div>';
+    h+='<div class="tile"><div class="k">How you work best'+(p?' · '+esc(S.p):'')+'</div><p>'+(p?esc(p):'<span class="locked">Pick your profile above.</span>')+'</p></div>';
+    h+='</div>';
+    var meta='<span>'+esc(S.r)+' rising</span>'+(S.n?'<span>North Node '+esc(S.n)+'</span>':'')+(S.t?'<span>'+esc(S.t)+'</span>':'')+(S.p?'<span>'+esc(S.p)+'</span>':'');
+    h+='<div class="xwrap fade"><div class="xcard"><div class="gl" aria-hidden="true">'+G[S.r]+'</div><div class="mono">My Expansion Card · Sagittarius season 2026</div><h3>'+esc(r.t)+'</h3><div class="meta">'+meta+'</div><div class="mv">'+esc(r.m)+'</div><div class="ft mono">Spiritual Business Skool</div></div>';
+    h+='<div class="xside"><div class="mono">Your Expansion Card</div><h2 style="margin-bottom:10px">Screenshot it. <em>Share it.</em></h2><p>Post it in the community with your one move for the season, or copy the text version for your caption.</p><button class="btn mint" type="button" id="copycard">Copy my card as text</button><div class="msg" id="cardmsg" aria-live="polite"></div></div></div>';
+    dash.innerHTML=h;
+    cardText='MY EXPANSION CARD · Sagittarius season 2026\n'+S.r+' rising'+(S.n?' · North Node '+S.n:'')+(S.t?' · '+S.t:'')+(S.p?' '+S.p:'')+'\n\nTheme: '+r.t+'\nClearing: '+r.c+'\nExpanding: '+r.e+'\nMy move: '+r.m+(n?'\nMy stretch: '+n[0]:'')+(stop?'\nI\'m done forcing: '+stop:'');
+    $('copycard').addEventListener('click',function(){copy(cardText,$('cardmsg'));});
+  }
+  render();
+
+  /* ---------- expand or contract ---------- */
+  var ids=['d','c','t','a'];
+  function verdict(){
+    var v={}; ids.forEach(function(k){v[k]=+$('s-'+k).value; $('o-'+k).textContent=v[k];});
+    var avg=(v.d+v.c+v.t+v.a)/4, mn=Math.min(v.d,v.c,v.t,v.a), name=($('opp').value||'').trim(), V,P;
+    if(v.d<=4){V='🌙 Contract';P='The desire isn\'t there. This is a should, and Sagittarius season is for wants. Release it and free the energy for something that pulls you.';}
+    else if(avg>=7.5&&mn>=6){V='🏹 Expand';P='Green lights across the board. Say yes, and use Mars in Virgo after November 25 to give it a plan and a date.';}
+    else if(v.c<=4){V='🌗 Expand the vision, shrink the scope';P='You want it, but you don\'t have the room yet. Choose the smallest version you could deliver well, or decide what comes off your plate first.';}
+    else if(v.t<=4){V='⏳ Not yet';P='Right idea, wrong moment. Park it with a date. After November 30, when Mercury is fully clear, look at it again with fresh eyes.';}
+    else if(v.a<=4){V='🔧 Rework it';P='It\'s tempting, but it doesn\'t serve the mission you\'re naming. Reshape it until it does, or let it be someone else\'s yes.';}
+    else if(avg>=5.5){V='🌱 Expand slowly';P='A real maybe. Run it as a small pilot with a clear end date, then decide with evidence.';}
+    else{V='🌙 Contract';P='Lukewarm everywhere. That\'s a no for now. Your energy has a better home this season.';}
+    var au=AUTH[S.a]?'<p class="au"><b>Before you lock it in ('+esc(S.a)+' authority):</b> '+esc(AUTH[S.a])+'</p>':'';
+    $('verdict').innerHTML='<div class="mono">'+(name?esc(name):'Your read')+'</div><div class="v">'+V+'</div><p>'+P+'</p>'+au;
+  }
+  ids.forEach(function(k){$('s-'+k).addEventListener('input',verdict);});
+  $('opp').addEventListener('input',verdict);
+  verdict();
+
+  /* ---------- ritual ---------- */
+  var R=load('cw26r')||{}, rf=['r1','r2','r3','r4'];
+  rf.forEach(function(id){var el=$(id); if(R[id]) el.value=R[id]; el.addEventListener('input',function(){R[id]=el.value; save('cw26r',R);});});
+  function ritText(){
+    var v=rf.map(function(id){return $(id).value.trim();});
+    if(!v[0]&&!v[1]&&!v[2]&&!v[3]) return null;
+    return {v:v,txt:'MY KISLEV RITUAL\nThe doubt I\'m releasing: '+(v[0]||'...')+'\nMy act of trust: '+(v[1]||'...')+'\nMy generous act: '+(v[2]||'...')+'\nMy business step: '+(v[3]||'...')};
+  }
+  $('seal').addEventListener('click',function(){
+    var r=ritText(), box=$('sealed');
+    if(!r){$('ritmsg').textContent='Fill in at least one line first.';box.classList.remove('show');return;}
+    $('ritmsg').textContent='';
+    box.innerHTML='<div class="mono">Sealed for Sagittarius season</div><p>I release the doubt that <b>'+esc(r.v[0]||'...')+'</b></p><p>I act in trust: <b>'+esc(r.v[1]||'...')+'</b></p><p>I give: <b>'+esc(r.v[2]||'...')+'</b></p><p>I build: <b>'+esc(r.v[3]||'...')+'</b></p>';
+    box.classList.remove('show'); void box.offsetWidth; box.classList.add('show','fade');
+  });
+  $('copyrit').addEventListener('click',function(){var r=ritText(); if(!r){$('ritmsg').textContent='Fill in at least one line first.';return;} copy(r.txt,$('ritmsg'));});
+
+  /* ---------- prompts ---------- */
+  var J=['What conversation am I finally ready to have?','What belief shrank my ambition this year?','What did the last six weeks show me about what I truly value?','Which offer, client or commitment is no longer true for me?','Where have I been undercharging to stay comfortable?','What did I keep going back to, and what was it trying to teach me?','Who do I need to forgive so I can move forward lighter?','What would I build next if I trusted it would work?'], ji=0;
+  function showJ(){var q=$('jq'); q.textContent=J[ji]; q.classList.remove('fade'); void q.offsetWidth; q.classList.add('fade'); $('jn').textContent='Prompt '+(ji+1)+' of '+J.length;}
+  $('jnext').addEventListener('click',function(){ji=(ji+1)%J.length; showJ();}); showJ();
+
+  var FP=['Where am I waiting for proof before I let myself believe?','What would I do today if the miracle were already on its way?','What is one doubt I can stop feeding?','Where can I be more generous than feels comfortable?','What bigger container is my business asking me to become?','What truth from Scorpio season am I ready to act on?','If I trusted my vision completely, what would be obvious?','Where am I playing small to stay liked?','What am I ready to be seen for?'];
+  var FA=['Send the pitch.','Raise the rate.','Book the discovery call.','Publish the idea.','Reopen the stalled conversation.','Email the dream collaborator.','Announce the launch date.','Record the video you\'ve been circling.','Make the offer to three people today.','Ask for the testimonial.','Put the big goal on the calendar.','Invite your audience into the thing.'];
+  var lp=-1,la=-1;
+  function rnd(n,last){var i; do{i=Math.floor(Math.random()*n);}while(i===last); return i;}
+  function showF(){lp=rnd(FP.length,lp); la=rnd(FA.length,la); var q=$('fq'), a=$('fa'); q.textContent=FP[lp]; a.textContent='Then: '+FA[la];
+    [q,a].forEach(function(el){el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade');});}
+  $('fnext').addEventListener('click',showF); showF();
+})();
+</script>
+</body>
+</html>
